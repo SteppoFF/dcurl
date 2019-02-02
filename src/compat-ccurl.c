@@ -13,7 +13,7 @@ static bool isInitialized = false;
 /* mutex protecting initialization section */
 static pthread_mutex_t mtx = PTHREAD_MUTEX_INITIALIZER;
 
-char *ccurl_pow(char *trytes, int mwm, int threads)
+char *ccurl_pow(char *trytes, int mwm)
 {
     pthread_mutex_lock(&mtx);
     if (!isInitialized) {
@@ -21,7 +21,7 @@ char *ccurl_pow(char *trytes, int mwm, int threads)
         isInitialized = true;
     }
     pthread_mutex_unlock(&mtx);
-    return (char *) dcurl_entry((int8_t *) trytes, mwm, threads);
+    return (char *) dcurl_entry((int8_t *) trytes, mwm, 8);
 }
 
 void ccurl_pow_finalize(void)
