@@ -21,7 +21,7 @@ char *ccurl_pow(char *trytes, int mwm)
         isInitialized = true;
     }
     pthread_mutex_unlock(&mtx);
-    return (char *) dcurl_entry((int8_t *) trytes, mwm, 8);
+    return (char *) dcurl_entry((int8_t *) trytes, mwm, 0);
 }
 
 void ccurl_pow_finalize(void)
